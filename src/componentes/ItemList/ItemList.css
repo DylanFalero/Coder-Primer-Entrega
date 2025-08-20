@@ -1,0 +1,8 @@
+.item-list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 columnas */
+  gap: 20px; /* espacio entre cards */
+  justify-items: center; /* centrar las cards */
+  margin: 20px auto;
+  max-width: 1000px; /* ancho máximo para que no se estiren mucho */
+}

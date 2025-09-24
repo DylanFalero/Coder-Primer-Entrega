@@ -20,14 +20,11 @@ export const CarritoContext = createContext({
 })
 
 export const CarritoProvider = ({children}) => {
-    //creamos estado carrit, total y cantidad total
     const [carrito, setCarrito] = useState([])
     const [total, setTotal] = useState(0)
     const [cantidadTotal, setCantidadTotal] = useState(0)
 
-    console.log(carrito)
 
-    //agregamos funciones auxiliares para logica carrito
 
     const agregarCarrito = (item, cantidad) =>{
         const productoExistente = carrito.find(prod => prod.item  === item.id)

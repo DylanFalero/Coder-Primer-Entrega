@@ -7,7 +7,6 @@ import { CarritoContext } from '../../context/context'
 
 export const CartItem = ({item, cantidad}) => {
     const {eliminarProducto} = useContext(CarritoContext)
-    console.log(item)
 
   return (
     <div>

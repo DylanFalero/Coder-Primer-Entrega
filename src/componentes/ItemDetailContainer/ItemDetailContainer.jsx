@@ -15,20 +15,12 @@ export const ItemDetailContainer = () => {
       getDoc(nuevoDoc)
       .then (respuesta=>{
         const data = respuesta.data()
-        console.log(data)
         const nuevoProducto = {id: respuesta.id, ...data}
-        console.log(nuevoProducto)
         setProducto(nuevoProducto)
       })
       .catch(error=>console.log(error))
     },[idItem])
     
-    
-    
-    // useEffect(()=>{
-    //     getUnProducto(idItem)
-    //     .then (respuesta=>setProducto(respuesta))
-    // },[idItem])
 
 
   return (

@@ -6,6 +6,7 @@ import { ItemDetailContainer } from './componentes/ItemDetailContainer/ItemDetai
 import { CarritoProvider } from './context/context'  
 import { Cart } from './componentes/Cart/Cart'
 import { Checkout } from './componentes/Checkout/Checkout'
+import { ToastContainer, toast } from 'react-toastify';
 
 
 
@@ -30,6 +31,7 @@ const App = () => {
 
         </Routes>   
       </CarritoProvider>  
+      <ToastContainer/>
       </BrowserRouter>
     </>
     

@@ -5,14 +5,18 @@ import { ItemList } from '../ItemList/ItemList'
 import { useParams } from 'react-router-dom'
 import { db } from '../../Services/config'
 import { collection, getDocs, query, where } from 'firebase/firestore'
+import { Loader } from '../Loader/Loader'
 
 export const ItemListContainer = ({}) => {
   const [productos, setProductos] = useState([])
+  const [loading, setLoading] = useState(false)
+
   const {idCategoria} = useParams()
 
 
 
   useEffect(()=>{
+    setLoading(true)
     const misProductos = idCategoria ? query(collection(db, "productos"), where ("idCat","==", idCategoria)) : collection (db, "productos")
     getDocs(misProductos)
     .then(res => {
@@ -23,29 +27,20 @@ export const ItemListContainer = ({}) => {
       setProductos(nuevosProductos)
     })
     .catch(error=>console.log(error))
+    .finally(()=>{
+      console.log("Proceso Terminado")
+        setLoading(false)   
+    })
   
-  },[])
+  },[idCategoria])
 
-
-
-  // useEffect(()=>{
-
-  //   const funcionProductos = idCategoria ? getProductoPorCategoria : getProductos
-  //   funcionProductos(idCategoria)
-  //   .then (respuesta => setProductos(respuesta))
-
-
-
-  //   // getProductos()
-  //   // .then (respuesta=>setProductos(respuesta))
-  //   // .catch(error => console.log(error))
-  // },[idCategoria])
 
   console.log(productos)
   return (
     <div>
       <h2>Mis Productos</h2>
-      <ItemList productos={productos} />
+      {loading? <Loader/> : <ItemList productos={productos} />}
+      
     </div>
   )
 }
